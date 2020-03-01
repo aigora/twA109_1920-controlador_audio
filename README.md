@@ -1,11 +1,14 @@
 # Título del trabajo
+CONTROLADOR DE AUDIO
 
 Descripción breve del proyecto a realizar (2-3 frases).
 
+Dispositivo que controle el audio de un reproductor y ajuste el volúmen automáticamente cuando haya cambios a un volúmen establecido por el usuario.
+
 ## Integrantes del equipo
 
-Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
+Rafael Rodríguez Palomo @rafaelrodriguezp
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+Monitorizar los cambios de volúmen que se producen en los reproductores y automatizar el ajuste del mismo para mantener un volúmen constante y facilitar y aumentar la comodidad en la escucha de un reproductor.
