@@ -3,7 +3,7 @@ CONTROLADOR DE AUDIO
 
 ## Descripción breve del proyecto a realizar (2-3 frases).
 
-Dispositivo que controle el audio de un reproductor y ajuste el volúmen automáticamente cuando haya cambios a un volúmen establecido por el usuario.
+Dispositivo que monitorice el volumen de audio (sensor de sonido) de un reproductor y ajuste el volúmen automáticamente mediante un transmisor de infrarrojos cuando haya aumentos y disminuciones del volumen establecido por el usuario para mantener un volumen constante. En la pantalla TFT aparecerá un gráfico dinámico que muestre las fluctuaciones del volumen y a su vez dos lineas que indiquen el máximo y mínimo establecido por el usuario. El PC se encargará de registrar las incidencias con hora y fecha.
 
 ## Integrantes del equipo
 
