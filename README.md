@@ -11,12 +11,15 @@ Rafael Rodríguez Palomo @rafaelrodriguezp
 
 ## Objetivos del trabajo
 
-Monitorizar los cambios de volúmen que se producen en los reproductores y automatizar el ajuste del mismo para mantener un volúmen constante y facilitar y aumentar la comodidad en la escucha de un reproductor.
+-Progamar el dispositivo de una forma robusta.
+-Enviar datos recogidos del entorno al PC y que este los analice y monitorice.
+-Almacenar las incidencias producidas con hora y fecha.
+-Desarrollar una interfaz en la pantalla TFT fácil de interpretar para el usuario.
 
 ## Relación de hardware (Sensores y actuadores)
 
-PC, placa Arduino o compatible, sensor de sonido compatible con arduino, emisor de infrarrojos, LCD, LED.
+PC, placa Arduino o compatible, sensor de sonido compatible con arduino, emisor de infrarrojos, pantalla LCD o TFT.
 
 ## Software
 
-Lenguaje C, IDE de Arduino para desarrollar el programa.
+Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
