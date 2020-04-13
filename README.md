@@ -1,9 +1,9 @@
 # Título del trabajo
-CONTROLADOR DE AUDIO
+DECODOIFICADOR/CODIFICADOR DE CÓDIGO MORSE
 
 ## Descripción breve del proyecto a realizar (2-3 frases).
 
-Dispositivo que monitorice el volumen de audio (sensor de sonido) de un reproductor y ajuste el volúmen automáticamente mediante un transmisor de infrarrojos cuando haya aumentos y disminuciones del volumen establecido por el usuario para mantener un volumen constante. En la pantalla TFT aparecerá un gráfico dinámico que muestre las fluctuaciones del volumen y a su vez dos lineas que indiquen el máximo y mínimo establecido por el usuario. El PC se encargará de registrar las incidencias con hora y fecha.
+Dispositivo que reciba a través de un micrófono una serie de señales de un silbato y las interprete como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Bzzer.
 
 ## Integrantes del equipo
 
@@ -13,12 +13,12 @@ Rafael Rodríguez Palomo @rafaelrodriguezp
 
 -Progamar el dispositivo de una forma robusta.
 -Enviar datos recogidos del entorno al PC y que este los analice y monitorice.
--Almacenar las incidencias producidas con hora y fecha.
--Desarrollar una interfaz en la pantalla TFT fácil de interpretar para el usuario.
+-Tener una herramienta fácil de usar para decodificar morse.
+-Desarrollar una interfaz en la pantalla LCD fácil de interpretar para el usuario.
 
 ## Relación de hardware (Sensores y actuadores)
 
-PC, placa Arduino o compatible, sensor de sonido compatible con arduino, emisor de infrarrojos, pantalla LCD o TFT.
+PC, placa Arduino o compatible, sensor de sonido compatible con arduino, LED, buzzer, pulsador, pantalla LCD.
 
 ## Software
 
