@@ -3,7 +3,7 @@ DECODOIFICADOR/CODIFICADOR DE CÓDIGO MORSE
 
 ## Descripción breve del proyecto a realizar (2-3 frases).
 
-Dispositivo que reciba a través de un micrófono una serie de señales de un silbato y las interprete como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Bzzer.
+Dispositivo que cuando se accione un pulsador monitorice el timepo que este está pulsado ye idenftifique las pulsaciones como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Buzzer.
 
 ## Integrantes del equipo
 
@@ -18,7 +18,7 @@ Rafael Rodríguez Palomo @rafaelrodriguezp
 
 ## Relación de hardware (Sensores y actuadores)
 
-PC, placa Arduino o compatible, sensor de sonido compatible con arduino, LED, buzzer, pulsador, pantalla LCD.
+PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD.
 
 ## Software
 
