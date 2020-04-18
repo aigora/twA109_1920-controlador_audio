@@ -7,6 +7,9 @@
 const int rs = 12, e = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd( rs, e, d4, d5, d6, d7); //Inicia los pines digitales del LCD
 
+//Macros
+#define LONG 500
+
 //Pines digitales
 const int led = 8;
 const int buzzer = 9;
@@ -14,17 +17,22 @@ const int boton_pr = 6;
 const int boton_fl = 7;
 const int boton_reinicio = 13;
 
-
-
+//Variables globales
+int valor_morse = 0;
+int valor_finletra = 0;
+char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
+char frase[LONG];
+int i = 0, j;
 
 //Funciones prototipo
-float coronometrartiempo();
-void identificarletras();
-void punto();
-void raya();
-void morse(char);
-void frase_a_morse();
-
+float coronometrartiempo();            //Mide el timpo que dura el pulsador en LOW
+void identificarletras();              //Identifica la letra según los valores que  a almacenado el vectro letra[5]
+void punto();                          //Enciende el LED y el buzzer durante el tiempo correspindiente al punto
+void raya();                           //Enciende el LED y el buzzer durante el tiempo correspindiente a la raya
+void morse(char);                      //Tiene dentro las funciones A(), B()...
+void frase_a_morse();                  //Es la función dentro de void loop. El bucle for recorre el vector y llama a la función morse para cada caracter
+void A(); void B(); void C(); void D(); void E(); void F(); void G(); void H(); void I(); void J(); void K(); void L(); void M(); void N();
+void O(); void P(); void Q(); void R(); void S(); void T(); void U(); void V(); void W(); void X(); void Y(); void Z(); void espacio();
 
 void setup() {
 //Inicia el puerto serie
@@ -47,7 +55,6 @@ pinMode(boton_reinicio, INPUT_PULLUP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
 }
 
@@ -60,11 +67,21 @@ void identificarletras(){
 }
 
 void punto(){
-  
+  digitalWrite(led, HIGH);
+  tone(buzzer, 2300);
+  delay(300);
+  digitalWrite(led, LOW);
+  noTone(buzzer);
+  delay(200);
 }
 
 void raya(){
-  
+  digitalWrite(led, HIGH);
+  tone(buzzer, 2300);
+  delay(700);
+  digitalWrite(led, LOW);
+  noTone(buzzer);
+  delay(200);
 }
 
 void morse(char caracter){
@@ -73,4 +90,147 @@ void morse(char caracter){
 
 void frase_a_morse(){
   
+}
+
+void A(){
+  punto();
+  raya();
+}
+void B(){
+  raya();
+  punto();
+  punto();
+  punto();
+  punto();
+}
+void C(){
+  raya();
+  punto();
+  raya();
+  punto();
+}
+void D(){
+  raya();
+  punto();
+  punto();
+}
+void E(){
+  punto();
+}
+void F(){
+  punto();
+  punto();
+  raya();
+  punto();
+}
+void G(){
+  raya();
+  raya();
+  punto();
+}
+void H(){
+  punto();
+  punto();
+  punto();
+  punto();
+}
+void I(){
+  punto();
+  punto();
+}
+void J(){
+  punto();
+  raya();
+  raya();
+  raya();
+}
+void K(){
+  raya();
+  punto();
+  raya();
+}
+void L(){
+  punto();
+  raya();
+  punto();
+  punto();
+}
+void M(){
+  raya();
+  raya();
+}
+void N(){
+  raya();
+  punto();
+}
+void O(){
+  raya();
+  raya();
+  raya();
+}
+void P(){
+  punto();
+  raya();
+  raya();
+  punto();
+}
+void Q(){
+  raya();
+  raya();
+  punto();
+  raya();
+}
+void R(){
+  punto();
+  raya();
+  punto();
+}
+void S(){
+  punto();
+  punto();
+  punto();
+}
+void T(){
+  raya();
+}
+void U(){
+  punto();
+  punto();
+  raya();
+}
+void V(){
+  punto();
+  punto();
+  punto();
+  raya();
+}
+void W(){
+  punto();
+  raya();
+  raya();
+}
+void X(){
+  raya();
+  punto();
+  punto();
+  raya();
+}
+void Y(){
+  raya();
+  punto();
+  raya();
+  raya();
+}
+void Z(){
+  raya();
+  raya();
+  punto();
+  punto();
+}
+void espacio(){
+  punto();
+  punto();
+  punto();
+  punto();
+  punto();
 }
