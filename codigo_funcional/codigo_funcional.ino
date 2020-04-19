@@ -18,21 +18,25 @@ const int boton_fl = 7;
 const int boton_reinicio = 13;
 
 //Variables globales
-int valor_morse = 0;
-int valor_finletra = 0;
+int valor_morse = 0;                     //Almacena el valor del pulsador que sirve para introducir puntos o rayas 
+int valor_finletra = 0;                  //Almacena el valor del pulsador que sirve para indicar que se ha introducido una letra
 char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
-char frase[LONG];
-int i = 0, j;
+char frase[LONG];                        //Vector que almacena la frase
+int i = 0, j, k;                         //Variables de control en bucles
 
 //Funciones prototipo
-float coronometrartiempo();            //Mide el timpo que dura el pulsador en LOW
-void identificarletras();              //Identifica la letra según los valores que  a almacenado el vectro letra[5]
-void punto();                          //Enciende el LED y el buzzer durante el tiempo correspindiente al punto
-void raya();                           //Enciende el LED y el buzzer durante el tiempo correspindiente a la raya
-void morse(char);                      //Tiene dentro las funciones A(), B()...
-void frase_a_morse();                  //Es la función dentro de void loop. El bucle for recorre el vector y llama a la función morse para cada caracter
+float coronometrartiempo();              //Mide el timpo que dura el pulsador en LOW
+void identificarletras();                //Identifica la letra según los valores que  a almacenado el vectro letra[5]
+void punto();                            //Enciende el LED y el buzzer durante el tiempo correspindiente al punto
+void raya();                             //Enciende el LED y el buzzer durante el tiempo correspindiente a la raya
+void morse(char);                        //Tiene dentro las funciones A(), B()...
+void frase_a_morse();                    //Es la función dentro de void loop. El bucle for recorre el vector y llama a la función morse para cada caracter
 void A(); void B(); void C(); void D(); void E(); void F(); void G(); void H(); void I(); void J(); void K(); void L(); void M(); void N();
 void O(); void P(); void Q(); void R(); void S(); void T(); void U(); void V(); void W(); void X(); void Y(); void Z(); void espacio();
+
+//******************
+//Funcion principal*
+//******************
 
 void setup() {
 //Inicia el puerto serie
@@ -78,18 +82,79 @@ void punto(){
 void raya(){
   digitalWrite(led, HIGH);
   tone(buzzer, 2300);
-  delay(700);
+  delay(800);
   digitalWrite(led, LOW);
   noTone(buzzer);
   delay(200);
 }
 
 void morse(char caracter){
-  
+  switch (caracter){
+    case 'a':
+    case 'A': A(); break;
+    case 'b':
+    case 'B': B(); break;
+    case 'c':
+    case 'C': C(); break;
+    case 'd':
+    case 'D': D(); break;
+    case 'e':
+    case 'E': E(); break;
+    case 'f':
+    case 'F': F(); break;
+    case 'g':
+    case 'G': G(); break;
+    case 'h':
+    case 'H': H(); break;
+    case 'i':
+    case 'I': I(); break;
+    case 'j':
+    case 'J': J(); break;
+    case 'k':
+    case 'K': K(); break;
+    case 'l':
+    case 'L': L(); break;
+    case 'm':
+    case 'M': M(); break;
+    case 'n':
+    case 'N': N(); break;
+    case 'o':
+    case 'O': O(); break;
+    case 'p':
+    case 'P': P(); break;
+    case 'q':
+    case 'Q': Q(); break;
+    case 'r':
+    case 'R': R(); break;
+    case 's':
+    case 'S': S(); break;
+    case 't':
+    case 'T': T(); break;
+    case 'u':
+    case 'U': U(); break;
+    case 'v':
+    case 'V': V(); break;
+    case 'w':
+    case 'W': W(); break;
+    case 'x':
+    case 'X': X(); break;
+    case 'y':
+    case 'Y': Y(); break;
+    case 'z':
+    case 'Z': Z(); break;
+    case ' ': espacio(); break;
+    default: Serial.println("ERROR"); break;
+  }
 }
 
 void frase_a_morse(){
-  
+  if (Serial.available()){
+    gets(frase);
+
+    for (k=0; frase[k]!='\0'; k++){
+      morse(frase[k]);
+    }
+  }
 }
 
 void A(){
@@ -228,9 +293,5 @@ void Z(){
   punto();
 }
 void espacio(){
-  punto();
-  punto();
-  punto();
-  punto();
-  punto();
+  delay(2000);
 }
