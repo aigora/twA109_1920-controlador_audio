@@ -35,7 +35,7 @@ void A(); void B(); void C(); void D(); void E(); void F(); void G(); void H(); 
 void O(); void P(); void Q(); void R(); void S(); void T(); void U(); void V(); void W(); void X(); void Y(); void Z(); void espacio();
 
 //******************
-//Funcion principal*
+//Funcion Principal*
 //******************
 
 void setup() {
@@ -61,6 +61,10 @@ pinMode(boton_reinicio, INPUT_PULLUP);
 void loop() {
 
 }
+
+//**********************
+//Funciones Secundarias*
+//**********************
 
 void cronometrartiempo(){
   
