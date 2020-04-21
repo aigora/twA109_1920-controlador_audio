@@ -24,5 +24,3 @@ PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD.
 Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Esquema de conexión del circuito
-
-![Esqeuma de Conexión] ()
