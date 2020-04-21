@@ -25,4 +25,3 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Esquema de conexión del circuito
 
-![Esquema de Conexión](C:\Users\rafar\Desktop\UNIVERSIDAD\PRIMERO\2º CUATRIMESTRE\INFORMÁTICA\Proyecto\Imágenes\Esquema.jpg)
