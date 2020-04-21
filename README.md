@@ -1,5 +1,4 @@
-# Título del trabajo
-DECODOIFICADOR/CODIFICADOR DE CÓDIGO MORSE
+# Decodificador/Codificador de código morse
 
 ## Descripción breve del proyecto a realizar (2-3 frases).
 
@@ -26,4 +25,4 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Esquema de conexión del circuito
 
-
+![Esquema de Conexión](\Users\rafar\Desktop\UNIVERSIDAD\PRIMERO\2º CUATRIMESTRE\INFORMÁTICA\Proyecto\Imágenes\Esquema.jpg)
