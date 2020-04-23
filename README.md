@@ -46,7 +46,9 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 - **void** O(); **void** P(); **void** Q(); **void** R(); **void** S(); **void** T(); **void** U();
 - **void** V(); **void** W(); **void** X(); **void** Y(); **void** Z(); **void** espacio();
 
+## Código
 
+[Código] (https://github.com/aigora/twA109_1920-controlador_audio/tree/master/codigo_funcional)
 
 
 
