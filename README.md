@@ -48,7 +48,7 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Código
 
-[Código] (https://github.com/aigora/twA109_1920-controlador_audio/tree/master/codigo_funcional)
+[Código] (https://www.google.es/)
 
 
 
