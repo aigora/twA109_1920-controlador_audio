@@ -48,7 +48,7 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Código
 
-[Código] (https://www.google.es/)
+
 
 
 
