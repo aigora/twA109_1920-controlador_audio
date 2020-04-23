@@ -2,7 +2,8 @@
 
 ## Descripción breve del proyecto a realizar (2-3 frases).
 
-Dispositivo que cuando se accione un pulsador monitorice el timepo que este está pulsado ye idenftifique las pulsaciones como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Buzzer.
+Dispositivo capaz de monitorizar el timepo que este está pulsado un pulsador e idenftifique las pulsaciones como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Buzzer.
+Para alternar entre ambos modos se introduce un potenciómetro, basta con girarlo para cambiar de modo.
 
 ## Integrantes del equipo
 
@@ -17,7 +18,7 @@ Rafael Rodríguez Palomo @rafaelrodriguezp
 
 ## Relación de hardware (Sensores y actuadores)
 
-PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD.
+PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD, potenciómetro.
 
 ## Software
 
