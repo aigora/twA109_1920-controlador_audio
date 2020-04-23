@@ -21,7 +21,7 @@ const int boton_reinicio = 13;
 int valor_morse = 0;                     //Almacena el valor del pulsador que sirve para introducir puntos o rayas 
 int valor_finletra = 0;                  //Almacena el valor del pulsador que sirve para indicar que se ha introducido una letra
 char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
-char frase[LONG];                        //Vector que almacena la frase
+String frase = "";                        //Vector que almacena la frase
 int i = 0, j, k;                         //Variables de control en bucles
 
 //Funciones prototipo
@@ -152,11 +152,17 @@ void morse(char caracter){
 }
 
 void frase_a_morse(){
-  if (Serial.available() > 0){
-    gets(frase);
 
-    for (k=0; frase[k]!='\0'; k++){
-      morse(frase[k]);
+  int longitud = 0;
+  char caracter;
+  
+  if (Serial.available() > 0){
+    frase = Serial.readString();
+    longitud = frase.length();
+
+    for (k=0; k<longitud; k++){
+      caracter = frase.charAt(k);
+      morse(carcater);
     }
   }
 }
