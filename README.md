@@ -39,7 +39,7 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 - **void** morse(char);                        //Tiene dentro las funciones A(), B()...
 
-- **void** frase_a_morse();                    //Es la función dentro de void loop. El -bucle for recorre el vector y llama a la función morse para cada caracter
+- **void** frase_a_morse();                    //Es la función dentro de void loop. El bucle for recorre el vector y llama a la función morse para cada caracter
 
 - **void** A(); **void** B(); **void** C(); **void** D(); **void** E(); **void** F(); **void** G();   //Las funciones A(), B()... incluyen las funciones punto()
 - **void** H(); **void** I(); **void** J(); **void** K(); **void** L(); **void** M(); **void** N();   //y raya() con el código de cada una
