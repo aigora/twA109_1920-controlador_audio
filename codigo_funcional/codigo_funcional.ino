@@ -152,7 +152,7 @@ void morse(char caracter){
 }
 
 void frase_a_morse(){
-  if (Serial.available()){
+  if (Serial.available() > 0){
     gets(frase);
 
     for (k=0; frase[k]!='\0'; k++){
