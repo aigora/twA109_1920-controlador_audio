@@ -4,8 +4,8 @@
 
 //Biblioteca del LCD
 #include <LiquidCrystal.h>
-const int rs = 12, e = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd( rs, e, d4, d5, d6, d7); //Inicia los pines digitales del LCD
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd( rs, en, d4, d5, d6, d7); //Inicia los pines digitales del LCD
 
 //Macros
 #define LONG 500
@@ -21,7 +21,7 @@ const int boton_reinicio = 13;
 int valor_morse = 0;                     //Almacena el valor del pulsador que sirve para introducir puntos o rayas 
 int valor_finletra = 0;                  //Almacena el valor del pulsador que sirve para indicar que se ha introducido una letra
 char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
-String frase = "";                        //Vector que almacena la frase
+char *frase;                             //Vector que almacena la frase
 int i = 0, j, k;                         //Variables de control en bucles
 
 //Funciones prototipo
@@ -31,8 +31,8 @@ void punto();                            //Enciende el LED y el buzzer durante e
 void raya();                             //Enciende el LED y el buzzer durante el tiempo correspindiente a la raya
 void morse(char);                        //Tiene dentro las funciones A(), B()...
 void frase_a_morse();                    //Es la función dentro de void loop. El bucle for recorre el vector y llama a la función morse para cada caracter
-void A(); void B(); void C(); void D(); void E(); void F(); void G(); void H(); void I(); void J(); void K(); void L(); void M(); void N();
-void O(); void P(); void Q(); void R(); void S(); void T(); void U(); void V(); void W(); void X(); void Y(); void Z(); void espacio();
+void a(); void b(); void c(); void d(); void E(); void f(); void g(); void h(); void I(); void J(); void K(); void l(); void m(); void n();
+void o(); void p(); void q(); void r(); void s(); void t(); void u(); void v(); void w(); void x(); void y(); void z(); void espacio();
 
 //******************
 //Funcion Principal*
@@ -95,21 +95,21 @@ void raya(){
 void morse(char caracter){
   switch (caracter){
     case 'a':
-    case 'A': A(); break;
+    case 'A': a(); break;
     case 'b':
-    case 'B': B(); break;
+    case 'B': b(); break;
     case 'c':
-    case 'C': C(); break;
+    case 'C': c(); break;
     case 'd':
-    case 'D': D(); break;
+    case 'D': d(); break;
     case 'e':
     case 'E': E(); break;
     case 'f':
-    case 'F': F(); break;
+    case 'F': f(); break;
     case 'g':
-    case 'G': G(); break;
+    case 'G': g(); break;
     case 'h':
-    case 'H': H(); break;
+    case 'H': h(); break;
     case 'i':
     case 'I': I(); break;
     case 'j':
@@ -117,35 +117,35 @@ void morse(char caracter){
     case 'k':
     case 'K': K(); break;
     case 'l':
-    case 'L': L(); break;
+    case 'L': l(); break;
     case 'm':
-    case 'M': M(); break;
+    case 'M': m(); break;
     case 'n':
-    case 'N': N(); break;
+    case 'N': n(); break;
     case 'o':
-    case 'O': O(); break;
+    case 'O': o(); break;
     case 'p':
-    case 'P': P(); break;
+    case 'P': p(); break;
     case 'q':
-    case 'Q': Q(); break;
+    case 'Q': q(); break;
     case 'r':
-    case 'R': R(); break;
+    case 'R': r(); break;
     case 's':
-    case 'S': S(); break;
+    case 'S': s(); break;
     case 't':
-    case 'T': T(); break;
+    case 'T': t(); break;
     case 'u':
-    case 'U': U(); break;
+    case 'U': u(); break;
     case 'v':
-    case 'V': V(); break;
+    case 'V': v(); break;
     case 'w':
-    case 'W': W(); break;
+    case 'W': w(); break;
     case 'x':
-    case 'X': X(); break;
+    case 'X': x(); break;
     case 'y':
-    case 'Y': Y(); break;
+    case 'Y': y(); break;
     case 'z':
-    case 'Z': Z(); break;
+    case 'Z': z(); break;
     case ' ': espacio(); break;
     default: Serial.println("ERROR"); break;
   }
@@ -153,38 +153,36 @@ void morse(char caracter){
 
 void frase_a_morse(){
 
-  int longitud = 0;
   char caracter;
   
   if (Serial.available() > 0){
-    frase = Serial.readString();
-    longitud = frase.length();
+    *frase = Serial.read();
 
-    for (k=0; k<longitud; k++){
-      caracter = frase.charAt(k);
-      morse(carcater);
+    for (k=0; frase[k]!='\0' ; k++){
+      caracter = frase[k];
+      morse(caracter);
     }
   }
 }
 
-void A(){
+void a(){
   punto();
   raya();
 }
-void B(){
+void b(){
   raya();
   punto();
   punto();
   punto();
   punto();
 }
-void C(){
+void c(){
   raya();
   punto();
   raya();
   punto();
 }
-void D(){
+void d(){
   raya();
   punto();
   punto();
@@ -192,18 +190,18 @@ void D(){
 void E(){
   punto();
 }
-void F(){
+void f(){
   punto();
   punto();
   raya();
   punto();
 }
-void G(){
+void g(){
   raya();
   raya();
   punto();
 }
-void H(){
+void h(){
   punto();
   punto();
   punto();
@@ -224,79 +222,79 @@ void K(){
   punto();
   raya();
 }
-void L(){
+void l(){
   punto();
   raya();
   punto();
   punto();
 }
-void M(){
+void m(){
   raya();
   raya();
 }
-void N(){
+void n(){
   raya();
   punto();
 }
-void O(){
+void o(){
   raya();
   raya();
   raya();
 }
-void P(){
+void p(){
   punto();
   raya();
   raya();
   punto();
 }
-void Q(){
+void q(){
   raya();
   raya();
   punto();
   raya();
 }
-void R(){
+void r(){
   punto();
   raya();
   punto();
 }
-void S(){
+void s(){
   punto();
   punto();
   punto();
 }
-void T(){
+void t(){
   raya();
 }
-void U(){
-  punto();
-  punto();
-  raya();
-}
-void V(){
-  punto();
+void u(){
   punto();
   punto();
   raya();
 }
-void W(){
+void v(){
   punto();
-  raya();
-  raya();
-}
-void X(){
-  raya();
   punto();
   punto();
   raya();
 }
-void Y(){
+void w(){
+  punto();
+  raya();
+  raya();
+}
+void x(){
+  raya();
+  punto();
+  punto();
+  raya();
+}
+void y(){
   raya();
   punto();
   raya();
   raya();
 }
-void Z(){
+void z(){
   raya();
   raya();
   punto();
