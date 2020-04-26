@@ -47,6 +47,12 @@ lcd.begin(16,2);
 lcd.clear(); 
 lcd.setCursor(0,0);
 
+/*if(modo >= 0 && modo <= 512){
+  lcd.print("Decodificador: ");
+} else{
+  lcd.print("Codificador: ")
+}*/
+
 //Inicia los pines digitales como entradas o salidas
 pinMode(led, OUTPUT);
 pinMode(buzzer, OUTPUT);
@@ -59,19 +65,111 @@ pinMode(boton_reinicio, INPUT_PULLUP);
 }
 
 void loop() {
+  int modo = 0;
+  modo = analogRead(A0);
+  
+  if (modo >= 0 && modo <= 512){             // Modo decodificador
+       int valor_reinicio = 0;
+       float tiempo = 0;
+  
+       valor_morse = digitalRead(boton_pr);
+       valor_finletra = digitalRead(boton_fl);
+       valor_reinicio = digitalRead(boton_reinicio);
+  
+       if(valor_morse == LOW){                     //Se inicia cuando se pulsa una vez el botón
+          tiempo = cronometrartiempo();             //Llamada a la función cronometrartiempo()
 
+          if (tiempo <= 0.3){                       //Si tiempo es menor que 0.6 guarda un punto
+            letra[i] = 'p';              
+            i += 1;
+         } else {
+            letra[i] = 'r';                          //Si tiempo es mayor que o.6 guarda raya
+            i += 1;
+         }
+       }
+
+       if (valor_finletra == LOW){                  //Solo entra en este if si se pulsa el botón de fin de letra
+         identificarletras();                       //Llamada a la función identificarletra()
+         i = 0;
+         for (j=0; j<5; j++){                       //Se reinicia el vector letra[] para la siguiente letra
+           letra[j] = 'n';
+         }
+       }
+
+       if (valor_reinicio == LOW){                  //Botón para reiniciar la pantalla
+          lcd.setCursor(0,1);
+          lcd.print("                ");
+          lcd.setCursor(0,1);
+      }
+     
+  }else {                                      //Modo codificador
+    frase_a_morse();
+  }
 }
 
 //**********************
 //Funciones Secundarias*
 //**********************
 
-void cronometrartiempo(){
+float cronometrartiempo(){
   
+   float t1 = 0;
+   float t2 = 0;
+   float tfinal = 0;
+   valor_morse = digitalRead(boton_pr);
+
+   while (valor_morse == HIGH){                  //Se que da en este bucle si no se presiona el botón
+    valor_morse = digitalRead(boton_pr);
+   }
+
+   t1 = millis();                                //Guarda el momento en el que se ha presionado el boton
+   digitalWrite (led, HIGH);                     //Enciende el pin
+   tone(buzzer, 2300);                           //Enciende el buzzer
+   
+   while (valor_morse == LOW){                   //Se queda en este bucle si no se suelta el botón
+    valor_morse = digitalRead(boton_pr);
+   }
+
+   t2 = millis();                                //Momento en el que se deja de prsionar el botón
+   tfinal = t2 - t1;                             //Mide la longitud del intervalo
+   tfinal = tfinal/1000;                         //Para trabajar en segundos
+   digitalWrite(led, LOW);
+   noTone(buzzer);
+
+   return tfinal;
 }
 
 void identificarletras(){
-  
+  if (letra[0] == 'p'){
+    if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("A"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'n' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("E"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("F"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("H"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("I"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'r' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("J"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("L"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'r' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("P"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'p' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("R"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("S"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("U"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("V"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("W"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'p' ){lcd.print("-"); delay(500);}
+  } else {
+    if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("B"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("C"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("D"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'r' && letra[2] == 'p' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("G"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("K"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'r' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("M"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("N"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'r' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("O"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'r' && letra[2] == 'p' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("Q"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'n' && letra[2] == 'n' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("T"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("X"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("Y"); delay(500);}
+    else if (letra[0] == 'r' && letra[1] == 'r' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("Z"); delay(500);}
+  }
 }
 
 void punto(){
