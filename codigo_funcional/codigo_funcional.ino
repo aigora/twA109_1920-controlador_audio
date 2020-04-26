@@ -23,6 +23,7 @@ int valor_finletra = 0;                  //Almacena el valor del pulsador que si
 char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
 char *frase;                             //Vector que almacena la frase
 int i = 0, j, k;                         //Variables de control en bucles
+int estado = 0;
 
 //Funciones prototipo
 float coronometrartiempo();              //Mide el timpo que dura el pulsador en LOW
@@ -47,12 +48,6 @@ lcd.begin(16,2);
 lcd.clear(); 
 lcd.setCursor(0,0);
 
-/*if(modo >= 0 && modo <= 512){
-  lcd.print("Decodificador: ");
-} else{
-  lcd.print("Codificador: ")
-}*/
-
 //Inicia los pines digitales como entradas o salidas
 pinMode(led, OUTPUT);
 pinMode(buzzer, OUTPUT);
@@ -67,11 +62,20 @@ pinMode(boton_reinicio, INPUT_PULLUP);
 void loop() {
   int modo = 0;
   modo = analogRead(A0);
+  Serial.println(modo);
   
   if (modo >= 0 && modo <= 512){             // Modo decodificador
        int valor_reinicio = 0;
        float tiempo = 0;
-  
+
+       if (estado == 0){
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("DECODIFICADOR");
+        lcd.setCursor(0,1);
+        estado = 1;
+       }
+       
        valor_morse = digitalRead(boton_pr);
        valor_finletra = digitalRead(boton_fl);
        valor_reinicio = digitalRead(boton_reinicio);
@@ -79,11 +83,11 @@ void loop() {
        if(valor_morse == LOW){                     //Se inicia cuando se pulsa una vez el botón
           tiempo = cronometrartiempo();             //Llamada a la función cronometrartiempo()
 
-          if (tiempo <= 0.3){                       //Si tiempo es menor que 0.6 guarda un punto
+          if (tiempo <= 0.3){                       //Si tiempo es menor que 0.3 guarda un punto
             letra[i] = 'p';              
             i += 1;
          } else {
-            letra[i] = 'r';                          //Si tiempo es mayor que o.6 guarda raya
+            letra[i] = 'r';                          //Si tiempo es mayor que o.3 guarda raya
             i += 1;
          }
        }
@@ -103,6 +107,13 @@ void loop() {
       }
      
   }else {                                      //Modo codificador
+    if (estado == 1){
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("CODIFICADOR");
+        lcd.setCursor(0,1);
+        estado = 0;
+       }
     frase_a_morse();
   }
 }
@@ -154,7 +165,7 @@ void identificarletras(){
     else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("U"); delay(500);}
     else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'r' && letra[4]== 'n' ){lcd.print("V"); delay(500);}
     else if (letra[0] == 'p' && letra[1] == 'r' && letra[2] == 'r' && letra[3] == 'n' && letra[4]== 'n' ){lcd.print("W"); delay(500);}
-    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'p' ){lcd.print("-"); delay(500);}
+    else if (letra[0] == 'p' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'p' ){lcd.print(" "); delay(500);}
   } else {
     if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'p' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("B"); delay(500);}
     else if (letra[0] == 'r' && letra[1] == 'p' && letra[2] == 'r' && letra[3] == 'p' && letra[4]== 'n' ){lcd.print("C"); delay(500);}
@@ -175,7 +186,7 @@ void identificarletras(){
 void punto(){
   digitalWrite(led, HIGH);
   tone(buzzer, 2300);
-  delay(300);
+  delay(150);
   digitalWrite(led, LOW);
   noTone(buzzer);
   delay(200);
@@ -259,6 +270,7 @@ void frase_a_morse(){
     for (k=0; frase[k]!='\0' ; k++){
       caracter = frase[k];
       morse(caracter);
+      delay(400);
     }
   }
 }
