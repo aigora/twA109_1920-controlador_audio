@@ -25,7 +25,7 @@ PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD, potenció
 Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Esquema de conexión del circuito
-![Esquema de Conexión](https://raw.githubusercontent.com/aigora/twA109_1920-controlador_audio/master/Esquema.jpg)
+![Esquema de Conexión](https://github.com/aigora/twA109_1920-controlador_audio/blob/master/Esquema.jpg)
 
 ## Identificación de subprogramas
 
@@ -48,7 +48,7 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Código
 
-[Codigo] (https://github.com/aigora/twA109_1920-controlador_audio/blob/master/codigo_funcional/codigo_funcional.ino)
+![Codigo] (https://github.com/aigora/twA109_1920-controlador_audio/blob/master/codigo_funcional/codigo_funcional.ino)
 
 
 
