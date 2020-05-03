@@ -23,7 +23,8 @@ int valor_finletra = 0;                  //Almacena el valor del pulsador que si
 char letra[5] = {'n','n','n','n','n'};   //Se inicia un vector con todos los elemnetos 'n' para indicar que esos elementos no son ni puntos ni rayas. No todas las letras tienen 5 elementos.
 char *frase;                             //Vector que almacena la frase
 int i = 0, j, k;                         //Variables de control en bucles
-int estado = 0;
+int estadodecod = 0;                     //Controlar lcd en el modo decodificador
+int estadocodif = 0;                     //Controlar lcd en el modo codificador
 
 //Funciones prototipo
 float coronometrartiempo();              //Mide el timpo que dura el pulsador en LOW
@@ -47,6 +48,8 @@ Serial.begin(9600);
 lcd.begin(16,2);
 lcd.clear(); 
 lcd.setCursor(0,0);
+lcd.print("Traductor morse");
+lcd.setCursor(0,1);
 
 //Inicia los pines digitales como entradas o salidas
 pinMode(led, OUTPUT);
@@ -60,22 +63,14 @@ pinMode(boton_reinicio, INPUT_PULLUP);
 }
 
 void loop() {
+  int valor_reinicio = 0;
   int modo = 0;
   modo = analogRead(A0);
   Serial.println(modo);
   
   if (modo >= 0 && modo <= 512){             // Modo decodificador
-       int valor_reinicio = 0;
        float tiempo = 0;
 
-       if (estado == 0){
-        lcd.clear();
-        lcd.setCursor(0,0);
-        lcd.print("DECODIFICADOR");
-        lcd.setCursor(0,1);
-        estado = 1;
-       }
-       
        valor_morse = digitalRead(boton_pr);
        valor_finletra = digitalRead(boton_fl);
        valor_reinicio = digitalRead(boton_reinicio);
@@ -106,15 +101,13 @@ void loop() {
           lcd.setCursor(0,1);
       }
      
-  }else {                                      //Modo codificador
-    if (estado == 1){
-        lcd.clear();
-        lcd.setCursor(0,0);
-        lcd.print("CODIFICADOR");
-        lcd.setCursor(0,1);
-        estado = 0;
-       }
+  }else {                                            //Modo codificador
     frase_a_morse();
+    if (valor_reinicio == LOW){                  //Botón para reiniciar la pantalla
+          lcd.setCursor(0,1);
+          lcd.print("                ");
+          lcd.setCursor(0,1);
+      }
   }
 }
 
@@ -266,9 +259,10 @@ void frase_a_morse(){
   
   if (Serial.available() > 0){
     *frase = Serial.read();
-
+    
     for (k=0; frase[k]!='\0' ; k++){
       caracter = frase[k];
+      lcd.print(caracter);
       morse(caracter);
       delay(400);
     }
