@@ -1,6 +1,6 @@
 # Decodificador/Codificador de código morse
 
-## Descripción breve del proyecto a realizar (2-3 frases).
+## Descripción breve del proyecto a realizar.
 
 Dispositivo capaz de monitorizar el timepo que este está pulsado un pulsador e idenftifique las pulsaciones como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Buzzer.
 Para alternar entre ambos modos se introduce un potenciómetro, basta con girarlo para cambiar de modo.
@@ -48,6 +48,7 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 
 ## Código
 La versión del código es una versión funcional. Falta mejorar la interfaz del LCD para mostrar más información.
+
 Código (https://github.com/aigora/twA109_1920-controlador_audio/blob/master/codigo_funcional/codigo_funcional.ino)
 
 
