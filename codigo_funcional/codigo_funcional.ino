@@ -2,6 +2,9 @@
 //Bibliotecas, Macros y Variables globales*
 //*****************************************
 
+//Biblioteca para el tratamiento de cadenas
+#include <ctype.h>
+
 //Biblioteca del LCD
 #include <LiquidCrystal.h>
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
@@ -49,6 +52,9 @@ lcd.begin(16,2);
 lcd.clear(); 
 lcd.setCursor(0,0);
 lcd.print("Traductor morse");
+delay(2000);
+lcd.clear();
+lcd.print("    LISTO!!");
 lcd.setCursor(0,1);
 
 //Inicia los pines digitales como entradas o salidas
@@ -103,11 +109,11 @@ void loop() {
      
   }else {                                            //Modo codificador
     frase_a_morse();
-    if (valor_reinicio == LOW){                  //Botón para reiniciar la pantalla
+    //if (valor_reinicio == LOW){                  //Botón para reiniciar la pantalla
           lcd.setCursor(0,1);
           lcd.print("                ");
           lcd.setCursor(0,1);
-      }
+      //}
   }
 }
 
@@ -261,6 +267,7 @@ void frase_a_morse(){
     *frase = Serial.read();
     
     for (k=0; frase[k]!='\0' ; k++){
+      frase[k] = toupper(frase[k]);
       caracter = frase[k];
       lcd.print(caracter);
       morse(caracter);
@@ -405,5 +412,5 @@ void z(){
   punto();
 }
 void espacio(){
-  delay(2000);
+  delay(1500);
 }
