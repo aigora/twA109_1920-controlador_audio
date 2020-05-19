@@ -47,9 +47,9 @@ Lenguaje C/C++, IDE de Arduino o DevC++ para desarrollar el programa.
 - **void** V(); **void** W(); **void** X(); **void** Y(); **void** Z(); **void** espacio();
 
 ## Código
-La versión del código es una versión funcional. Falta mejorar la interfaz del LCD para mostrar mejor la información.
+La versión del código es la versión final.
 
-Código (https://github.com/aigora/twA109_1920-controlador_audio/blob/master/codigo_funcional/codigo_funcional.ino)
+[Código] (https://github.com/aigora/twA109_1920-controlador_audio/blob/master/codigo_funcional/codigo_funcional.ino)
 
 
 
