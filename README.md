@@ -19,6 +19,7 @@ Rafael Rodríguez Palomo @rafaelrodriguezp
 ## Relación de hardware (Sensores y actuadores)
 
 PC, placa Arduino o compatible, LED, buzzer, pulsadores, pantalla LCD, potenciómetro.
+[PDF] con la identificacion de sensores y actuadores(https://github.com/aigora/twA109_1920-controlador_audio/blob/master/Identificaci%C3%B3n%20de%20sensores%20y%20actuadores.pdf)
 
 ## Software
 
