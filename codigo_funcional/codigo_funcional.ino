@@ -108,12 +108,10 @@ void loop() {
       }
      
   }else {                                            //Modo codificador
-    frase_a_morse();
-    //if (valor_reinicio == LOW){                  //Botón para reiniciar la pantalla
-          lcd.setCursor(0,1);
+    frase_a_morse();                                 
+          lcd.setCursor(0,1);                        //Muestra en la pantalla la letra que esta codificando
           lcd.print("                ");
           lcd.setCursor(0,1);
-      //}
   }
 }
 
