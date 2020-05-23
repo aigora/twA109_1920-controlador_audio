@@ -1,6 +1,6 @@
 # Decodificador/Codificador de código morse
 
-## Video enviado a tarvés de la paltaforma consigna como invitado.
+## Video enviado a través de la paltaforma consigna como invitado.
 
 ## Descripción breve del proyecto a realizar.
 
