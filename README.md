@@ -1,5 +1,7 @@
 # Decodificador/Codificador de código morse
 
+## Video enviado a tarvés de la paltaforma consigna como invitado.
+
 ## Descripción breve del proyecto a realizar.
 
 Dispositivo capaz de monitorizar el timepo que este está pulsado un pulsador e idenftifique las pulsaciones como rayas o puntos y muestre en un LCD el mensaje decodoficado. Por otra parte cuando se introduzca una frase desde un ordenador el dispositivo lo traducirá a codigo morse y lo emitirá a través de un LED y un Buzzer.
